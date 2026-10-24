@@ -1,0 +1,198 @@
+@import '@/styles/variables.scss';
+
+.ann-manage {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: $gap-lg;
+
+  &__deny {
+    margin: $gap-lg $gap-md;
+    padding: $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    border: 1rpx solid $glass-border;
+    text-align: center;
+  }
+
+  &__deny-text {
+    font-size: $font-md;
+    color: $color-text-sub;
+  }
+
+  &__list {
+    margin: $gap-md;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-sm;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+    padding: $gap-md;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+  }
+
+  &__item-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6rpx;
+  }
+
+  &__item-title {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__item-body {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__item-ops {
+    display: flex;
+    flex-direction: column;
+    gap: 12rpx;
+  }
+
+  &__op {
+    padding: 10rpx 24rpx;
+    border-radius: $radius-pill;
+    background: $color-primary-soft;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &--danger {
+      background: rgba(225, 90, 63, 0.14);
+    }
+  }
+
+  &__op-text {
+    font-size: $font-xs;
+    color: $color-primary-dark;
+    font-weight: 600;
+
+    .ann-manage__op--danger & {
+      color: $color-accent;
+    }
+  }
+
+  &__add {
+    margin-top: $gap-xs;
+    min-height: $tap-min;
+    border-radius: $radius-lg;
+    border: 2rpx dashed $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background $duration-fast $ease-soft;
+
+    &:active {
+      background: $color-primary-soft;
+    }
+  }
+
+  &__add-text {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-primary-dark;
+  }
+
+  &__form {
+    margin: $gap-md;
+    padding: $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg-strong;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+  }
+
+  &__label {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 24rpx 28rpx;
+    font-size: $font-md;
+    color: $color-text;
+    background: #fff;
+    border-radius: $radius-md;
+    border: 1rpx solid $glass-border;
+  }
+
+  &__textarea {
+    height: 280rpx;
+  }
+
+  &__placeholder {
+    color: $color-text-weak;
+  }
+
+  &__btns {
+    display: flex;
+    gap: $gap-md;
+  }
+
+  &__btn {
+    flex: 1;
+    min-height: $tap-min;
+    border-radius: $radius-pill;
+    background: $glass-bg;
+    border: 1rpx solid $glass-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    &--primary {
+      background: $gradient-primary;
+      border-color: transparent;
+      box-shadow: $shadow-float;
+    }
+  }
+
+  &__btn-text {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-text;
+
+    .ann-manage__btn--primary & {
+      color: #fff;
+    }
+  }
+}
