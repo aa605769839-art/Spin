@@ -1,0 +1,509 @@
+@import '@/styles/variables.scss';
+
+.feed {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: 200rpx;
+
+  &__hero {
+    position: relative;
+    margin: $gap-md $gap-md 0;
+    padding: $gap-lg $gap-lg $gap-md;
+    border-radius: $radius-lg;
+    background: linear-gradient(125deg, #ffb277 0%, #ef7d33 50%, #e15a3f 100%);
+    color: #fff;
+    box-shadow: $shadow-glow-strong;
+    overflow: hidden;
+
+    /* 横扫高光，营造流光质感 */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 60%;
+      height: 140%;
+      background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.32) 50%,
+        transparent 70%
+      );
+      transform: translateX(-120%) skewX(-12deg);
+      animation: ec-sweep 5.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+  }
+
+  &__hero-top {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+  }
+
+  &__hero-greet {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__brand {
+    font-size: $font-xs;
+    font-weight: 700;
+    letter-spacing: 2rpx;
+    margin-bottom: 8rpx;
+    /* 渐变文字在暖色 hero 上改用白底描边的通透感 */
+    background: linear-gradient(90deg, #fff8ec, #ffe6cf);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  &__greeting {
+    font-size: $font-xl;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    letter-spacing: 1rpx;
+    text-shadow: 0 2rpx 10rpx rgba(180, 80, 30, 0.28);
+  }
+
+  &__subtitle {
+    font-size: $font-sm;
+    color: rgba(255, 255, 255, 0.88);
+    margin-top: 8rpx;
+  }
+
+  /* 不突兀的「切换频道」入口 */
+  &__switch {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6rpx;
+    padding: 10rpx 20rpx;
+    border-radius: $radius-pill;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1rpx solid rgba(255, 255, 255, 0.35);
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.94);
+    }
+  }
+
+  &__switch-icon {
+    font-size: $font-md;
+    color: #fff;
+    line-height: 1;
+  }
+
+  &__switch-text {
+    font-size: $font-xs;
+    color: #fff;
+  }
+
+  &__hero-tags {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+    margin-top: $gap-md;
+    flex-wrap: wrap;
+  }
+
+  &__weather {
+    font-size: $font-sm;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.22);
+    padding: 8rpx 22rpx;
+    border-radius: $radius-pill;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  &__weather-dist {
+    font-size: $font-xs;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.14);
+    padding: 8rpx 18rpx;
+    border-radius: $radius-pill;
+  }
+
+  &__date {
+    font-size: $font-xs;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: $gap-sm;
+    padding: $gap-md $gap-md $gap-sm;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__filter {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-height: 72rpx;
+    padding: 0 32rpx;
+    display: flex;
+    align-items: center;
+    gap: 8rpx;
+    border-radius: $radius-pill;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+    transition: transform $duration-fast $ease-soft, box-shadow $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &.is-active {
+      background: $gradient-primary;
+      border-color: transparent;
+      box-shadow: $shadow-float;
+
+      .feed__filter-text,
+      .feed__filter-icon {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__filter-icon {
+    font-size: $font-sm;
+    line-height: 1;
+  }
+
+  &__filter-text {
+    font-size: $font-sm;
+    color: $color-text-sub;
+  }
+
+  &__highlights {
+    margin: $gap-sm $gap-md 0;
+  }
+
+  &__highlights-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 $gap-xs $gap-xs;
+  }
+
+  &__highlights-title {
+    font-size: $font-md;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ef7d33, #e15a3f 50%, #9b6bff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  &__highlights-sub {
+    font-size: $font-xs;
+    color: $color-text-weak;
+  }
+
+  /* 创建者专属的公告管理入口：低调，不喧宾夺主 */
+  &__manage {
+    display: flex;
+    align-items: center;
+    padding: 6rpx 22rpx;
+    border-radius: $radius-pill;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  &__manage-text {
+    font-size: $font-xs;
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+
+  &__highlights-scroll {
+    display: flex;
+    gap: $gap-sm;
+    overflow-x: auto;
+    padding-bottom: $gap-xs;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__list {
+    min-height: 400rpx;
+    padding-top: $gap-sm;
+  }
+
+  &__more {
+    min-height: $tap-min;
+    margin: $gap-md $gap-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-pill;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 2rpx solid $color-primary;
+    transition: background $duration-fast $ease-soft;
+
+    &:active {
+      background: $color-primary-soft;
+    }
+  }
+
+  &__more-text {
+    font-size: $font-md;
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+
+  &__fab {
+    position: fixed;
+    right: $gap-lg;
+    bottom: 200rpx;
+    width: 132rpx;
+    height: 132rpx;
+    border-radius: 50%;
+    background: $gradient-fab;
+    box-shadow: $shadow-float;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    animation: ec-pulse 2.8s ease-in-out infinite;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+
+  &__fab-icon {
+    font-size: 44rpx;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 2rpx 6rpx rgba(180, 80, 30, 0.35);
+  }
+
+  &__fab-text {
+    font-size: $font-xs;
+    color: #fff;
+    margin-top: 6rpx;
+  }
+}
+
+/* 社区公告横滑卡片：彩色流光渐变 + 炫光 + 扫光动效，告别尴尬白底 */
+.notice-card {
+  flex-shrink: 0;
+  width: 280rpx;
+  padding: $gap-md;
+  border-radius: $radius-lg;
+  color: #fff;
+  box-shadow: 0 16rpx 34rpx rgba(216, 110, 50, 0.34), inset 0 1rpx 0 rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffa257 0%, #ef7d33 100%);
+
+  /* 横扫高光，营造流光质感 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 60%;
+    height: 140%;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.42) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%) skewX(-12deg);
+    animation: ec-sweep 5.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* 每张公告一套渐变，整体更炫酷、更有层次 */
+  &:nth-child(2) {
+    background: linear-gradient(135deg, #ff9a8b 0%, #ff6a88 55%, #ff99ac 100%);
+  }
+  &:nth-child(3) {
+    background: linear-gradient(135deg, #7cc6ff 0%, #6a8bff 60%, #9b6bff 100%);
+  }
+  &:nth-child(4) {
+    background: linear-gradient(135deg, #8be0a4 0%, #2f9e6b 100%);
+  }
+
+  &__icon {
+    font-size: 52rpx;
+    line-height: 1;
+    filter: drop-shadow(0 2rpx 6rpx rgba(0, 0, 0, 0.2));
+  }
+
+  &__title {
+    font-size: $font-md;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    text-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.2);
+  }
+
+  &__meta {
+    font-size: $font-xs;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.14);
+  }
+
+  &__body {
+    font-size: $font-xs;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.94);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.14);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* 无频道时的整页引导态 */
+.feed--onboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onboard {
+  width: 100%;
+  max-width: 640rpx;
+  margin: auto $gap-lg;
+  padding: $gap-lg;
+  border-radius: $radius-lg;
+  background: $glass-bg-strong;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1rpx solid $glass-border;
+  box-shadow: $shadow-glow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__brand {
+    font-size: 96rpx;
+    font-weight: 800;
+    letter-spacing: 8rpx;
+    margin-bottom: $gap-sm;
+  }
+
+  &__title {
+    font-size: $font-lg;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__sub {
+    font-size: $font-sm;
+    color: $color-text-sub;
+    margin-top: $gap-xs;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $gap-md;
+    margin-top: $gap-lg;
+    width: 100%;
+  }
+
+  &__btn {
+    flex: 1;
+    min-height: 180rpx;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12rpx;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &--primary {
+      background: $gradient-primary;
+      border-color: transparent;
+      box-shadow: $shadow-float;
+    }
+  }
+
+  &__btn-icon {
+    font-size: 56rpx;
+    line-height: 1;
+    color: $color-primary;
+    filter: drop-shadow(0 2rpx 6rpx rgba(216, 110, 50, 0.25));
+
+    .onboard__btn--primary & {
+      color: #fff;
+      filter: none;
+    }
+  }
+
+  &__btn-text {
+    font-size: $font-md;
+    font-weight: 600;
+    color: $color-text;
+
+    .onboard__btn--primary & {
+      color: #fff;
+    }
+  }
+
+  &__hint {
+    font-size: $font-xs;
+    color: $color-text-weak;
+    margin-top: $gap-md;
+  }
+}
