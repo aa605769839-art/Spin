@@ -1,0 +1,336 @@
+@import '@/styles/variables.scss';
+
+.mine {
+  min-height: 100vh;
+  padding: $gap-md;
+  padding-bottom: 160rpx;
+  background: transparent;
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+    padding: $gap-lg;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, #ffb277 0%, #ef7d33 55%, #e15a3f 100%);
+    box-shadow: $shadow-glow-strong;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 60%;
+      height: 160%;
+      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+      transform: translateX(-120%) skewX(-12deg);
+      animation: ec-sweep 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+
+  &__profile-edit {
+    flex-shrink: 0;
+    font-size: $font-sm;
+    font-weight: 600;
+    color: #fff;
+    padding: 8rpx 22rpx;
+    border-radius: $radius-pill;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1rpx solid rgba(255, 255, 255, 0.4);
+  }
+
+  /* 切换频道入口 */
+  &__switch {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+    margin-top: $gap-md;
+    padding: $gap-md $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.985);
+    }
+  }
+
+  &__switch-icon {
+    font-size: 40rpx;
+    line-height: 1;
+    color: $color-primary;
+  }
+
+  &__switch-text {
+    flex: 1;
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__switch-arrow {
+    font-size: $font-lg;
+    color: $color-text-weak;
+  }
+
+  /* 创建者公告管理入口 */
+  &__manage {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+    margin-top: $gap-md;
+    padding: $gap-md $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+
+    &:active {
+      transform: scale(0.985);
+    }
+  }
+
+  &__manage-icon {
+    font-size: 40rpx;
+    line-height: 1;
+  }
+
+  &__manage-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__manage-title {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__manage-desc {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    margin-top: 4rpx;
+  }
+
+  &__manage-arrow {
+    font-size: $font-lg;
+    color: $color-text-weak;
+  }
+
+  &__empty {
+    margin-top: 200rpx;
+    padding: $gap-lg;
+    text-align: center;
+  }
+
+  &__empty-text {
+    display: block;
+    font-size: $font-md;
+    color: $color-text-sub;
+    margin-bottom: $gap-md;
+  }
+
+  &__empty-btn {
+    display: inline-flex;
+    min-height: $tap-min;
+    padding: 0 $gap-lg;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-pill;
+    background: $gradient-primary;
+    box-shadow: $shadow-float;
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+
+  &__empty-btn-text {
+    font-size: $font-md;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__dm {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+    margin-top: $gap-md;
+    padding: $gap-md $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+
+    &:active {
+      transform: scale(0.985);
+      background: $color-primary-tint;
+    }
+  }
+
+  &__dm-icon {
+    font-size: 48rpx;
+    line-height: 1;
+  }
+
+  &__dm-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__dm-title {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__dm-desc {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    margin-top: 4rpx;
+  }
+
+  &__dm-arrow {
+    font-size: $font-lg;
+    color: $color-text-weak;
+  }
+
+  &__profile-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__profile-name {
+    display: block;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__profile-meta {
+    display: block;
+    font-size: $font-sm;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 6rpx;
+  }
+
+  &__stats {
+    display: flex;
+    gap: $gap-md;
+    margin-top: $gap-md;
+  }
+
+  &__stat {
+    flex: 1;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border-radius: $radius-lg;
+    padding: $gap-md 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+  }
+
+  &__stat-num {
+    font-size: $font-xl;
+    font-weight: 600;
+    color: $color-primary-dark;
+  }
+
+  &__stat-label {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    margin-top: 6rpx;
+  }
+
+  &__section {
+    margin-top: $gap-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border-radius: $radius-lg;
+    padding: $gap-lg;
+    box-shadow: $shadow-glow;
+    border: 1rpx solid $glass-border;
+  }
+
+  &__section-title {
+    display: block;
+    font-size: $font-md;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: $gap-sm;
+  }
+
+  &__post {
+    padding: $gap-md 0;
+    border-bottom: 2rpx solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__post-text {
+    display: block;
+    font-size: $font-base;
+    line-height: 1.8;
+    color: $color-text;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__post-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12rpx;
+  }
+
+  &__post-topic {
+    font-size: $font-xs;
+    color: $color-primary-dark;
+    background: $color-primary-soft;
+    padding: 4rpx 16rpx;
+    border-radius: $radius-pill;
+  }
+
+  &__post-count {
+    font-size: $font-xs;
+    color: $color-text-sub;
+  }
+
+  &__footer {
+    display: block;
+    text-align: center;
+    font-size: $font-xs;
+    color: $color-text-weak;
+    margin-top: $gap-lg;
+  }
+}
