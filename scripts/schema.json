@@ -1,0 +1,19 @@
+{
+  "title": "邻里圈动态",
+  "properties": [
+    { "name": "标题", "config": { "text": "" } },
+    { "name": "发布人", "config": { "text": "" } },
+    { "name": "楼栋门牌", "config": { "text": "" } },
+    { "name": "话题", "config": { "select": { "options": [
+      { "text": "邻里互助" },
+      { "text": "生活分享" },
+      { "text": "健康养生" },
+      { "text": "活动召集" }
+    ] } } },
+    { "name": "正文", "config": { "text": "" } },
+    { "name": "语音时长", "config": { "number": { "decimalPlaces": 0, "useSeparate": false } } },
+    { "name": "点赞数", "config": { "number": { "decimalPlaces": 0, "useSeparate": false } } },
+    { "name": "评论数", "config": { "number": { "decimalPlaces": 0, "useSeparate": false } } },
+    { "name": "发布时间", "config": { "date": "yyyy-mm-dd hh:mm" } }
+  ]
+}
