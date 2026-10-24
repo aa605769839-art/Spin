@@ -1,0 +1,50 @@
+@import '@/styles/variables.scss';
+
+.img-grid {
+  margin-top: $gap-sm;
+  display: grid;
+  gap: 10rpx;
+
+  &--single {
+    grid-template-columns: minmax(0, 68%);
+  }
+  &--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 详情页等场景：单图铺满整宽 */
+  &--large {
+    &.img-grid--single {
+      grid-template-columns: minmax(0, 100%);
+    }
+  }
+
+  &__cell {
+    position: relative;
+    border-radius: $radius-md;
+    overflow: hidden;
+    background: $color-primary-soft;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+
+  /* 单图更像照片，比例 4:3 更耐看 */
+  &--single &__cell {
+    aspect-ratio: 4 / 3;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
