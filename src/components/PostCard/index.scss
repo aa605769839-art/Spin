@@ -1,0 +1,124 @@
+@import '@/styles/variables.scss';
+
+.post-card {
+  position: relative;
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border-radius: $radius-lg;
+  padding: $gap-lg;
+  margin: 0 $gap-md $gap-md;
+  border: 1rpx solid $glass-border;
+  box-shadow: $shadow-glow;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+  }
+
+  &__who {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__meta {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    margin-top: 4rpx;
+  }
+
+  &__tags {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+  }
+
+  &__topic {
+    flex-shrink: 0;
+    font-size: $font-xs;
+    padding: 8rpx 22rpx;
+    border-radius: $radius-pill;
+    font-weight: 600;
+    background: $color-primary-soft;
+    color: $color-primary-dark;
+
+    /* 不同话题不同配色，让信息流更鲜活 */
+    &--help {
+      background: #eaf4ff;
+      color: #2f6fb0;
+    }
+    &--share {
+      background: #fef0e6;
+      color: #d9712f;
+    }
+    &--health {
+      background: #e7f6ec;
+      color: #2f8450;
+    }
+    &--event {
+      background: #f0e9ff;
+      color: #7a4fd0;
+    }
+    &--default {
+      background: $color-primary-soft;
+      color: $color-primary-dark;
+    }
+  }
+
+  &__hot {
+    flex-shrink: 0;
+    font-size: $font-xs;
+    padding: 8rpx 16rpx;
+    border-radius: $radius-pill;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff8a5c 0%, #e8442f 100%);
+    color: #fff;
+    box-shadow: 0 4rpx 12rpx rgba(232, 68, 47, 0.32);
+  }
+
+  &__body {
+    margin-top: $gap-md;
+  }
+
+  &__text {
+    display: block;
+    font-size: $font-md;
+    line-height: 1.85;
+    color: $color-text;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+
+  &__audio {
+    margin-top: $gap-sm;
+    display: inline-flex;
+    align-items: center;
+    gap: 12rpx;
+    background: $color-primary-soft;
+    border-radius: $radius-md;
+    padding: 16rpx 24rpx;
+  }
+
+  &__audio-icon {
+    font-size: $font-md;
+  }
+
+  &__audio-text {
+    font-size: $font-sm;
+    color: $color-primary-dark;
+  }
+
+}
