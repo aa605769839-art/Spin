@@ -1,0 +1,50 @@
+@import '@/styles/variables.scss';
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx $gap-lg;
+  text-align: center;
+
+  &__icon {
+    font-size: 96rpx;
+    line-height: 1;
+    margin-bottom: $gap-md;
+  }
+
+  &__title {
+    font-size: $font-md;
+    color: $color-text-sub;
+    line-height: 1.8;
+  }
+
+  &__hint {
+    font-size: $font-sm;
+    color: $color-text-sub;
+    margin-top: 12rpx;
+    line-height: 1.8;
+  }
+
+  &__action {
+    margin-top: $gap-lg;
+    min-height: $tap-min;
+    padding: 0 56rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-pill;
+    background: $color-primary;
+
+    &:active {
+      background: $color-primary-dark;
+    }
+  }
+
+  &__action-text {
+    font-size: $font-md;
+    color: #fff;
+    font-weight: 600;
+  }
+}
