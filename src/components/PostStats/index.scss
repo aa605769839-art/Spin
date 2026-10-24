@@ -1,0 +1,55 @@
+@import '@/styles/variables.scss';
+
+/* 紧凑数据条：浏览/点赞/评论并排，小图标 + 小数字，不再用大长方形格子 */
+.post-stats {
+  display: flex;
+  align-items: center;
+  gap: $gap-lg;
+  margin-top: $gap-md;
+  padding-top: $gap-sm;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.5);
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8rpx;
+    min-height: 64rpx;
+    padding: 6rpx 16rpx;
+    border-radius: $radius-pill;
+    color: $color-text-sub;
+    transition: transform $duration-fast $ease-soft, background $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.94);
+      background: $color-primary-soft;
+    }
+
+    &.is-active {
+      .post-stats__icon--like,
+      .post-stats__num {
+        color: $color-accent;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: $font-md;
+    line-height: 1;
+    transition: transform $duration-fast $ease-soft;
+
+    &--like.is-liked {
+      color: $color-accent;
+      animation: ec-heartbeat 0.5s $ease-soft;
+    }
+  }
+
+  &__item--like.is-active &__icon--like {
+    transform: scale(1.15);
+  }
+
+  &__num {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    font-variant-numeric: tabular-nums;
+  }
+}
