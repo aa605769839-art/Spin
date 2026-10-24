@@ -1,0 +1,157 @@
+@import '@/styles/variables.scss';
+
+.messages {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: 40rpx;
+
+  &__list {
+    margin: $gap-md $gap-md 0;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-glow;
+    border: 1rpx solid $glass-border;
+    overflow: hidden;
+  }
+}
+
+.msg-item {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  padding: $gap-md $gap-lg;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.5);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-primary-tint;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $gap-sm;
+  }
+
+  &__name {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &.is-pinned {
+    background: linear-gradient(135deg, rgba(255, 178, 119, 0.18) 0%, rgba(239, 125, 51, 0.10) 100%);
+  }
+
+  &__sys-icon {
+    flex-shrink: 0;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48rpx;
+    line-height: 1;
+    background: $gradient-primary;
+    box-shadow: $shadow-float;
+  }
+
+  /* 群组会话图标：冷色渐变，区别于私信头像 */
+  &__group-icon {
+    flex-shrink: 0;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 28rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gradient-cool;
+    box-shadow: $shadow-glow-cool;
+    overflow: hidden;
+  }
+
+  &__group-icon-text {
+    font-size: 48rpx;
+    line-height: 1;
+    filter: drop-shadow(0 2rpx 4rpx rgba(0, 0, 0, 0.2));
+  }
+
+  &__count {
+    display: inline-block;
+    margin-left: 12rpx;
+    padding: 2rpx 14rpx;
+    font-size: 20rpx;
+    font-weight: 600;
+    color: $color-cool-dark;
+    background: rgba(106, 139, 255, 0.16);
+    border-radius: $radius-pill;
+    vertical-align: middle;
+  }
+
+  &__pin {
+    display: inline-block;
+    margin-left: 12rpx;
+    padding: 2rpx 14rpx;
+    font-size: 20rpx;
+    font-weight: 600;
+    color: #fff;
+    background: $color-accent;
+    border-radius: $radius-pill;
+    vertical-align: middle;
+  }
+
+  &__time {
+    font-size: $font-xs;
+    color: $color-text-weak;
+    flex-shrink: 0;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-sm;
+    margin-top: 8rpx;
+  }
+
+  &__preview {
+    flex: 1;
+    min-width: 0;
+    font-size: $font-sm;
+    color: $color-text-sub;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__unread {
+    flex-shrink: 0;
+    min-width: 36rpx;
+    height: 36rpx;
+    padding: 0 8rpx;
+    border-radius: $radius-pill;
+    background: $color-accent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      font-size: 22rpx;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+}
