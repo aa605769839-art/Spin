@@ -1,0 +1,80 @@
+@import '@/styles/variables.scss';
+
+.channel-create {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: $gap-lg;
+
+  .form {
+    margin: $gap-md;
+    padding: $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg-strong;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-lg;
+  }
+
+  .form__field {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+  }
+
+  .form__label {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  .form__input,
+  .form__textarea {
+    min-height: $tap-min;
+    padding: 24rpx 28rpx;
+    font-size: $font-md;
+    color: $color-text;
+    background: #fff;
+    border-radius: $radius-md;
+    border: 1rpx solid $glass-border;
+    box-shadow: inset 0 1rpx 4rpx rgba(0, 0, 0, 0.04);
+  }
+
+  .form__textarea {
+    height: 200rpx;
+  }
+
+  .form__placeholder {
+    color: $color-text-weak;
+  }
+
+  .form__tip {
+    font-size: $font-xs;
+    color: $color-text-weak;
+    line-height: 1.6;
+  }
+
+  .form__submit {
+    min-height: $tap-min;
+    border-radius: $radius-pill;
+    background: $gradient-primary;
+    box-shadow: $shadow-float;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+
+  .form__submit-text {
+    font-size: $font-lg;
+    font-weight: 700;
+    color: #fff;
+  }
+}
