@@ -1,0 +1,179 @@
+@import '@/styles/variables.scss';
+
+.channel-switch {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: $gap-lg;
+
+  .switch {
+    margin: $gap-md;
+    padding: $gap-md;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  .switch__hint {
+    font-size: $font-sm;
+    color: $color-text-sub;
+    padding: 0 $gap-xs;
+  }
+
+  .switch__list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-sm;
+  }
+
+  .switch__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $gap-md;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+    transition: transform $duration-fast $ease-soft, border-color $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &.is-current {
+      border-color: $color-primary;
+      box-shadow: $shadow-float;
+    }
+  }
+
+  .switch__item-main {
+    display: flex;
+    flex-direction: column;
+    gap: 6rpx;
+  }
+
+  .switch__name {
+    font-size: $font-lg;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  .switch__meta {
+    font-size: $font-xs;
+    color: $color-text-sub;
+  }
+
+  .switch__current-tag {
+    font-size: $font-xs;
+    font-weight: 700;
+    color: #fff;
+    background: $gradient-primary;
+    padding: 6rpx 20rpx;
+    border-radius: $radius-pill;
+  }
+
+  .switch__empty {
+    padding: $gap-lg;
+    text-align: center;
+  }
+
+  .switch__empty-text {
+    font-size: $font-sm;
+    color: $color-text-weak;
+  }
+
+  .switch__actions {
+    display: flex;
+    gap: $gap-md;
+    margin-top: $gap-xs;
+  }
+
+  .switch__btn {
+    flex: 1;
+    min-height: 140rpx;
+    border-radius: $radius-lg;
+    background: $glass-bg;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-card;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8rpx;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  .switch__btn-icon {
+    font-size: 44rpx;
+    line-height: 1;
+    color: $color-primary;
+  }
+
+  .switch__btn-text {
+    font-size: $font-md;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  .switch__limit {
+    font-size: $font-xs;
+    color: $color-text-weak;
+    text-align: center;
+    padding: $gap-xs;
+  }
+
+  /* 邀请链接卡片：任何成员都能复制并发送 */
+  .switch__invite {
+    margin-top: $gap-sm;
+    padding: $gap-md $gap-md $gap-lg;
+    border-radius: $radius-lg;
+    background: $glass-bg-strong;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1rpx solid $glass-border;
+    box-shadow: $shadow-glow;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+  }
+
+  .switch__invite-title {
+    font-size: $font-md;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  .switch__invite-sub {
+    font-size: $font-xs;
+    color: $color-text-sub;
+    line-height: 1.6;
+  }
+
+  .switch__invite-btn {
+    margin-top: $gap-sm;
+    min-height: 96rpx;
+    border-radius: $radius-pill;
+    background: $gradient-primary;
+    box-shadow: $shadow-float;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $duration-fast $ease-soft;
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  .switch__invite-btn-text {
+    font-size: $font-md;
+    font-weight: 700;
+    color: #fff;
+  }
+}
