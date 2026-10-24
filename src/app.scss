@@ -1,0 +1,229 @@
+@import './variables.scss';
+
+/* 极光底色：暖橙 + 暖粉 + 一丝冷蓝/青绿，组成柔和流动的光晕，
+   既「炫酷」又不刺眼，卡片以玻璃拟态浮在其上 */
+body {
+  background-color: #fdf7f1;
+  color: $color-text;
+  font-size: $font-base;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+#app {
+  background:
+    radial-gradient(120% 80% at 8% 2%, rgba(255, 165, 110, 0.34), transparent 42%),
+    radial-gradient(120% 80% at 96% 0%, rgba(255, 120, 150, 0.26), transparent 40%),
+    radial-gradient(120% 90% at 88% 26%, rgba(120, 150, 255, 0.16), transparent 44%),
+    radial-gradient(120% 90% at 4% 46%, rgba(170, 220, 150, 0.16), transparent 46%),
+    #fdf7f1;
+  background-attachment: fixed;
+}
+
+page,
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+/* 图片统一约束，避免大图撑破移动端布局 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 去掉默认 button 样式干扰，统一由业务类控制 */
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  line-height: inherit;
+
+  &::after {
+    border: none;
+  }
+}
+
+/* 滚动条美化：细、暖色、半透明，贴近原生高级感 */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(216, 130, 70, 0.18);
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 卡片入场（柔和上浮 + 轻微放大），提升高级感 */
+@keyframes ec-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.ec-fade-up {
+  animation: ec-fade-up 0.46s $ease-soft both;
+}
+
+/* 流光：用于标题/激活态的文字扫光 */
+@keyframes ec-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+.ec-gradient-text {
+  background: $gradient-shimmer;
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ec-shimmer 6s linear infinite;
+}
+
+/* 心跳：点赞时爱心弹一下 */
+@keyframes ec-heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.4);
+  }
+  70% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 呼吸光晕：FAB / 激活态的轻微脉动，增加生命力 */
+@keyframes ec-pulse {
+  0%,
+  100% {
+    box-shadow: 0 14rpx 34rpx rgba(216, 110, 50, 0.30), 0 0 0 0 rgba(239, 125, 51, 0.0);
+  }
+  50% {
+    box-shadow: 0 16rpx 40rpx rgba(216, 110, 50, 0.42), 0 0 0 14rpx rgba(239, 125, 51, 0.12);
+  }
+}
+
+/* 扫光：横扫过 hero / 卡片的高光，营造流光质感 */
+@keyframes ec-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  60%,
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+
+/* 玻璃拟态卡片：浮在极光上的磨砂玻璃 */
+.ec-glass {
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1rpx solid $glass-border;
+  box-shadow: $shadow-glow;
+}
+
+/* 演示层底部 tabBar —— 悬浮玻璃栏（邻里圈 / 私信 / 我的） */
+.ec-tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 560px;
+  height: calc(110rpx + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border-top: 1rpx solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 -6rpx 24rpx rgba(120, 80, 50, 0.08);
+  z-index: 50;
+}
+
+.ec-tab {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rpx;
+  color: $color-text-sub;
+  transition: color $duration-fast $ease-soft;
+
+  &.is-active {
+    color: $color-primary-dark;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  &__icon {
+    font-size: 40rpx;
+    line-height: 1;
+    transition: transform $duration-fast $ease-soft;
+  }
+
+  &.is-active &__icon {
+    transform: translateY(-2rpx) scale(1.08);
+  }
+
+  &__label {
+    font-size: 22rpx;
+  }
+
+  /* 激活态在图标上方放一抹渐变小高光，呼应「选中」 */
+  &.is-active::before {
+    content: '';
+    position: absolute;
+    top: 10rpx;
+    width: 44rpx;
+    height: 6rpx;
+    border-radius: 6rpx;
+    background: $gradient-primary;
+    box-shadow: 0 2rpx 8rpx rgba(239, 125, 51, 0.45);
+  }
+
+  /* 私信未读红点 */
+  &__badge {
+    position: absolute;
+    top: 8rpx;
+    left: calc(50% + 18rpx);
+    min-width: 32rpx;
+    height: 32rpx;
+    padding: 0 8rpx;
+    border-radius: $radius-pill;
+    background: linear-gradient(135deg, #ff7a59 0%, #ef4444 100%);
+    color: #fff;
+    font-size: 20rpx;
+    font-weight: 600;
+    line-height: 32rpx;
+    text-align: center;
+    box-shadow: 0 4rpx 10rpx rgba(239, 68, 68, 0.4);
+  }
+}
