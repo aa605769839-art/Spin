@@ -1,0 +1,53 @@
+@import '@/styles/variables.scss';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 $gap-md;
+  background: $gradient-hero;
+  color: #fff;
+  box-shadow: 0 4rpx 16rpx rgba(216, 110, 50, 0.18);
+
+  &__back {
+    width: 72rpx;
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -$gap-sm;
+    border-radius: 50%;
+    transition: background $duration-fast $ease-soft;
+
+    &:active {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    &--placeholder {
+      background: none;
+    }
+  }
+
+  &__back-icon {
+    font-size: 56rpx;
+    color: #fff;
+    line-height: 1;
+    margin-top: -6rpx;
+  }
+
+  &__title {
+    flex: 1;
+    text-align: center;
+    font-size: $font-lg;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1rpx;
+  }
+
+  &__spacer {
+    width: 72rpx;
+  }
+}
