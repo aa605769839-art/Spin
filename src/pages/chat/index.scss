@@ -1,0 +1,287 @@
+@import '@/styles/variables.scss';
+
+.chat {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: $gap-md;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+  }
+
+  &__bottom {
+    height: 1rpx;
+  }
+
+  &__sys-foot {
+    flex-shrink: 0;
+    text-align: center;
+    padding: $gap-sm $gap-md calc(#{$gap-sm} + env(safe-area-inset-bottom));
+    font-size: $font-xs;
+    color: $color-text-weak;
+    background: rgba(255, 247, 241, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1rpx solid $glass-border;
+  }
+}
+
+.notify-card {
+  display: flex;
+  align-items: flex-start;
+  gap: $gap-md;
+  padding: $gap-md $gap-lg;
+  border-radius: $radius-lg;
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1rpx solid $glass-border;
+  box-shadow: $shadow-glow;
+  position: relative;
+
+  &:active {
+    transform: scale(0.99);
+    background: $color-primary-tint;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40rpx;
+    line-height: 1;
+    background: $color-primary-soft;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    display: block;
+    font-size: $font-base;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__text {
+    display: block;
+    margin-top: 6rpx;
+    font-size: $font-sm;
+    line-height: 1.7;
+    color: $color-text-sub;
+    word-break: break-all;
+  }
+
+  &__time {
+    display: block;
+    margin-top: 8rpx;
+    font-size: 20rpx;
+    color: $color-text-weak;
+  }
+
+  &__dot {
+    position: absolute;
+    top: $gap-md;
+    right: $gap-md;
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    background: $color-accent;
+  }
+}
+
+.bubble-row {
+  display: flex;
+  align-items: flex-start;
+  gap: $gap-sm;
+
+  &.is-mine {
+    flex-direction: row-reverse;
+  }
+}
+
+.bubble {
+  max-width: 72%;
+  padding: $gap-md $gap-lg;
+  border-radius: $radius-lg;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+
+  &__text {
+    font-size: $font-base;
+    line-height: 1.8;
+    color: $color-text;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  &__time {
+    font-size: 20rpx;
+    color: rgba(0, 0, 0, 0.32);
+    align-self: flex-end;
+  }
+
+  .is-peer & {
+    background: $color-card;
+    border: 1rpx solid rgba(241, 230, 218, 0.8);
+    border-top-left-radius: 8rpx;
+    box-shadow: $shadow-card;
+  }
+
+  .is-mine & {
+    background: $gradient-primary;
+    border-top-right-radius: 8rpx;
+    box-shadow: $shadow-float;
+
+    .bubble__text {
+      color: #fff;
+    }
+    .bubble__time {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.chat__input-bar {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+  padding: $gap-sm $gap-md calc(#{$gap-sm} + env(safe-area-inset-bottom));
+  background: rgba(255, 247, 241, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1rpx solid $glass-border;
+}
+
+.chat__input-row {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+}
+
+.chat__input {
+  flex: 1;
+  height: 96rpx;
+  padding: 0 28rpx;
+  border-radius: $radius-pill;
+  background: $color-bg;
+  font-size: $font-md;
+  color: $color-text;
+}
+
+.chat__input-placeholder {
+  color: $color-text-weak;
+  font-size: $font-base;
+}
+
+.chat__send {
+  flex-shrink: 0;
+  height: 96rpx;
+  padding: 0 40rpx;
+  border-radius: $radius-pill;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity $duration-fast $ease-soft;
+
+  &.is-disabled {
+    background: #e6d8cc;
+  }
+
+  &-text {
+    font-size: $font-md;
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+/* 群聊成员头像墙 */
+.chat__members {
+  padding: $gap-md;
+  border-radius: $radius-lg;
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1rpx solid $glass-border;
+  box-shadow: $shadow-glow;
+}
+
+.chat__members-tip {
+  display: block;
+  font-size: $font-xs;
+  color: $color-text-sub;
+  margin-bottom: $gap-sm;
+}
+
+.chat__members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-md;
+}
+
+.chat__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  width: 110rpx;
+  transition: transform $duration-fast $ease-soft;
+
+  &:active {
+    transform: scale(0.94);
+  }
+}
+
+.chat__member-name {
+  font-size: 22rpx;
+  color: $color-text-sub;
+  max-width: 110rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 私信规则提示 */
+.chat__dm-hint {
+  font-size: $font-xs;
+  color: $color-accent;
+  padding: 6rpx $gap-sm;
+  line-height: 1.5;
+
+  &--soft {
+    color: $color-text-weak;
+  }
+}
+
+.chat__reject {
+  align-self: flex-end;
+  padding: 8rpx 26rpx;
+  border-radius: $radius-pill;
+  background: rgba(225, 90, 63, 0.12);
+  transition: transform $duration-fast $ease-soft;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.chat__reject-text {
+  font-size: $font-xs;
+  color: $color-accent;
+  font-weight: 600;
+}
